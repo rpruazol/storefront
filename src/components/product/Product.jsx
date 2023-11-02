@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import inventorySlice from "../../store/inventory";
+import cartSlice from "../../store/cart";
 
 const Product = ({ product }) => {
   // define dispatch
@@ -17,6 +17,8 @@ const Product = ({ product }) => {
   
   const handleClick = (e) => {
     console.log('adding 1', e.target.value, 'to your cart')
+    dispatch(cartSlice.actions.addToCart(e.target.value));
+
   };
   return (
     <Grid item xs={3}>

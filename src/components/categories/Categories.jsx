@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, Menu, MenuItem, Select } from "@mui/material";
 // import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import inventorySlice from "../../store/inventory";
@@ -22,6 +22,9 @@ const Categories = () => {
           label="Categories"
           onChange={handleChange}
         >
+        <MenuItem value={"all"}>
+          All
+        </MenuItem>
           {categories.map((category) => {
             return (
             <MenuItem value={category.name}>{category.displayName}</MenuItem>

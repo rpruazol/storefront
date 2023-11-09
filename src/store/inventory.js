@@ -1,5 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
+const url = import.meta.env.VITE_STORE_URL
+console.log(url)
+
+export const getInventory = createAsyncThunk('GET/products', async () => {
+  const response = await fetch(`${url}/products`);
+  const json = await response.json()
+  return json.results
+})
 
 const inventorySlice = createSlice({
   name: "inventory",
@@ -20,11 +29,7 @@ const inventorySlice = createSlice({
     ],
     activeCategory: 'all'
   },
-  reducers: {
-    setActiveCategory: (state, action) => {
-      state.activeCategory = action.payload;
-    }
-  }
+
 })
 
 export default inventorySlice;

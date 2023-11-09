@@ -1,14 +1,25 @@
 // import React from "react";
 import { Grid } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Product from "../product/Product";
-// map through beastdata and pass individual beasts to beast components
+import {useEffect} from "react"
+import { getProducts } from "../../store/products";
+
+
 const Products = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('use effect')
+    dispatch(getProducts())
+  }, [dispatch])
+
   const products = useSelector((state) => {
-    return state.inventory.products
+    return state.products.products
   });
+  
   const category = useSelector((state => {
-    return state.inventory.activeCategory
+    return state.categories.activeCategory
   }))
   return (
     <Grid container spacing={2} marginTop={"16px"}>

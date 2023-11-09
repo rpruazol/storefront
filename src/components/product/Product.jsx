@@ -14,7 +14,6 @@ import cartSlice from "../../store/cart";
 const Product = ({ product }) => {
   // define dispatch
   const dispatch = useDispatch();
-  
   const handleClick = (e) => {
     console.log('adding 1', e.target.value, 'to your cart')
     dispatch(cartSlice.actions.addToCart(e.target.value));
